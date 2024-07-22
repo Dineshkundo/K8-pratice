@@ -1,0 +1,63 @@
+controlplane ~ ✖ history
+    1  kubectl get pods
+    2  kubectl get rs
+    3  kubectl get deploy
+    4  kubectl get deploy
+    5  kubectl get rs
+    6  kubectl get pods
+    7  kubectl describe
+    8  kubectl describe pods
+    9  ls
+   10  cat deployment-definition-1.yaml 
+   11  vi deployment-definition-1.yaml 
+   12  kubectl explain deployment | head -n3
+   13  kubectl create -f deployment-definition-1.yaml 
+   14  vim deployment-definition-httpd.yaml 
+   15  kubectl create -f deployment-definition-httpd.yaml 
+   16  cat deployment-definition-httpd.yaml 
+   17  history
+   
+   
+controlplane ~ ➜  cat deployment-definition-1.yaml 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: busybox-pod
+  template:
+    metadata:
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - name: busybox-container
+        image: busybox888
+        command:
+        - sh
+        - "-c"
+        - echo Hello Kubernetes! && sleep 3600
+		
+---------------------------------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: httpd-frontend
+  template:
+    metadata:
+      labels:
+        name: httpd-frontend
+    spec:
+      containers:
+      - name: httpd-frontend
+        image: httpd:2.4-alpine
