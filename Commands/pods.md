@@ -1,4 +1,4 @@
-### Commands on pods
+## Commands on pods
 
 kubectl get pods -> To see existing pods
 
