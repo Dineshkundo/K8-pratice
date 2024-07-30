@@ -1,0 +1,26 @@
+## To get services
+kubectl get service
+
+kubectl get svc
+
+kubectl describe svc kubernetes
+
+-------------------------------------------
+service-definition.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  type: NodePort 
+  Ports:
+    - targetPort: 8080
+      port: 8080
+      nodePort:30080
+  selector:
+    name:simple-webapp
+----------------------------------------------
+kubectl create -f service-definition-1.yaml
+
+----------------------------------------------
