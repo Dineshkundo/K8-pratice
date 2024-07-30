@@ -1,0 +1,39 @@
+## To see existing rs
+kubectl get replicaset --> To see replicaset
+
+kubectl get rs
+
+## To see 
+kubectl describe replicaset new-replica-set 
+
+---------------------------------------------
+
+```
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: nginx
+  template:
+    metadata:
+      labels:
+        tier: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+```
+-----------------------------------------------
+## To edit a rs
+kubectl edit rs name-of-the-replicaset
+## To delete a rs
+kubectl delete rs name_of_the_replicaset
+
+## To Scale RepliSet to 5 pods
+kubectl scale rs new-replica-set --replicas=5 replicaset.apps/new-replica-set scaled
+
+
