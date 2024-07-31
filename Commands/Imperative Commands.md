@@ -6,6 +6,7 @@ kubectl run nginx-pod --image=nginx:alpine
 kubectl run redis --image=redis:alpine --dry-run=client -oyaml > redis-pod.yaml
 
 -----------------
+```
 ---
 apiVersion: v1
 kind: Pod
@@ -19,6 +20,7 @@ spec:
     name: redis
   dnsPolicy: ClusterFirst
   restartPolicy: Always
+```
 ------------------------------------
 kubectl create -f redis-pod.yaml
 ------------------------------------
